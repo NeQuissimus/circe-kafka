@@ -55,11 +55,15 @@ scalacOptions ++= Seq(
 
 libraryDependencies ++= Seq(
   "io.circe" %% "circe-core" % "0.9.3",
+  "io.circe" %% "circe-generic" % "0.9.3" % Test,
   "io.circe" %% "circe-parser" % "0.9.3",
   "org.apache.kafka" % "kafka-clients" % "1.1.0",
   compilerPlugin("com.github.ghik" %% "silencer-plugin" % "0.6"),
-  "com.github.ghik" %% "silencer-lib" % "0.6"
+  "com.github.ghik" %% "silencer-lib" % "0.6",
+  "com.lihaoyi" %% "utest" % "0.6.3" % Test
 )
+
+testFrameworks += new TestFramework("utest.runner.Framework")
 
 useGpg := false
 
