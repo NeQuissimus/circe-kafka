@@ -2,6 +2,7 @@ scalaVersion in ThisBuild := "2.12.6"
 
 organization := "com.nequissimus"
 name := "circe-kafka"
+version := "1.0.0"
 
 // https://tpolecat.github.io/2017/04/25/scalac-flags.html
 scalacOptions ++= Seq(
@@ -59,3 +60,19 @@ libraryDependencies ++= Seq(
   compilerPlugin("com.github.ghik" %% "silencer-plugin" % "0.6"),
   "com.github.ghik" %% "silencer-lib" % "0.6"
 )
+
+useGpg := false
+
+isSnapshot := version.value endsWith "SNAPSHOT"
+
+publishTo := Some(
+  if (isSnapshot.value)
+    Opts.resolver.sonatypeSnapshots
+  else
+    Opts.resolver.sonatypeStaging
+)
+
+usePgpKeyHex("E8C4928416101E9F")
+pgpPublicRing := baseDirectory.value / "project" / ".gnupg" / "pubring.gpg"
+pgpSecretRing := baseDirectory.value / "project" / ".gnupg" / "secring.gpg"
+pgpPassphrase := sys.env.get("PGP_PASS").map(_.toArray)
