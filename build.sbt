@@ -2,7 +2,7 @@ scalaVersion in ThisBuild := "2.12.6"
 
 organization := "com.nequissimus"
 name := "circe-kafka"
-version := "1.0.0"
+version := "1.0.1-SNAPSHOT"
 
 // https://tpolecat.github.io/2017/04/25/scalac-flags.html
 scalacOptions ++= Seq(
