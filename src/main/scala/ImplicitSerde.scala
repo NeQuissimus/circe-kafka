@@ -21,7 +21,7 @@ package object kafka {
   implicit def deserializer[T](implicit decoder: Decoder[T]): Deserializer[T] = new Deserializer[T] {
     def close(): Unit                                                    = {}
     @silent def configure(config: JMap[String, _], isKey: Boolean): Unit = {}
-    def deserialize(topic: String, data: Array[Byte]): T                 = decode[T](new String(data)).getOrElse(null.asInstanceOf[T])
+    def deserialize(topic: String, data: Array[Byte]): T                 = decode[T](new String(data)).fold(_ => null.asInstanceOf[T], identity)
   }
 
   implicit def serde[T](implicit serializer: Serializer[T], deserializer: Deserializer[T]): Serde[T] = Serdes.serdeFrom(serializer, deserializer)

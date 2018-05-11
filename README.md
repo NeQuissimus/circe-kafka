@@ -6,8 +6,10 @@ Implicitly turn your `Encoder` and `Decoder` instances into `Serializer`, `Deser
 
 ## Artifact
 
+`circe-kafka` is cross-compiled against Scala 2.11 and 2.12.
+
 ```scala
-libraryDependencies ++= "com.nequissimus" %% "circe-kafka" % "1.0.0"
+libraryDependencies ++= "com.nequissimus" %% "circe-kafka" % "1.0.1"
 ```
 
 ## Usage
