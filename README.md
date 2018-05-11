@@ -4,6 +4,12 @@
 
 Implicitly turn your `Encoder` and `Decoder` instances into `Serializer`, `Deserializer` and `Serde`.
 
+## Artifact
+
+```scala
+libraryDependencies ++= "com.nequissimus" %% "circe-kafka" % "1.0.0"
+```
+
 ## Usage
 
 ```scala
