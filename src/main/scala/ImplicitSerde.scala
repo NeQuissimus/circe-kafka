@@ -7,6 +7,7 @@ import com.github.ghik.silencer.silent
 import io.circe.{ Decoder, Encoder }
 import io.circe.parser._
 
+import org.apache.kafka.common.errors.SerializationException
 import org.apache.kafka.common.serialization.{ Deserializer, Serde, Serdes, Serializer }
 
 package object kafka {
@@ -21,7 +22,9 @@ package object kafka {
   implicit def deserializer[T](implicit decoder: Decoder[T]): Deserializer[T] = new Deserializer[T] {
     def close(): Unit                                                    = {}
     @silent def configure(config: JMap[String, _], isKey: Boolean): Unit = {}
-    def deserialize(topic: String, data: Array[Byte]): T                 = decode[T](new String(data)).fold(_ => null.asInstanceOf[T], identity)
+    def deserialize(topic: String, data: Array[Byte]): T                 = if (data eq null) null.asInstanceOf[T] else {
+      decode[T](new String(data)).fold(error => throw new SerializationException(error), identity)
+    }
   }
 
   implicit def serde[T](implicit serializer: Serializer[T], deserializer: Deserializer[T]): Serde[T] = Serdes.serdeFrom(serializer, deserializer)
