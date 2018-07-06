@@ -1,4 +1,4 @@
-package com.nequissimus.circe
+package nequi.circe
 
 import io.circe.{ Decoder, Encoder }
 import io.circe.generic.auto._

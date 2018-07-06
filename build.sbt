@@ -3,7 +3,7 @@ crossScalaVersions := Seq("2.11.12", "2.12.6")
 
 organization := "com.nequissimus"
 name := "circe-kafka"
-version := "1.0.4-SNAPSHOT"
+version := "2.0.0-SNAPSHOT"
 
 // https://tpolecat.github.io/2017/04/25/scalac-flags.html
 val scalac212Options = Seq(
@@ -62,11 +62,13 @@ scalacOptions := (CrossVersion.partialVersion(scalaBinaryVersion.value) match {
   case _ => scalac211Options ++ scalac212Options
 })
 
+resolvers += "Kafka Staging" at "https://repository.apache.org/content/groups/staging"
+
 libraryDependencies ++= Seq(
   "io.circe" %% "circe-core" % "0.9.3",
   "io.circe" %% "circe-generic" % "0.9.3" % Test,
   "io.circe" %% "circe-parser" % "0.9.3",
-  "org.apache.kafka" % "kafka-clients" % "1.1.0",
+  "org.apache.kafka" % "kafka-clients" % "2.0.0",
   compilerPlugin("com.github.ghik" %% "silencer-plugin" % "1.0"),
   "com.github.ghik" %% "silencer-lib" % "1.0",
   "com.lihaoyi" %% "utest" % "0.6.4" % Test
