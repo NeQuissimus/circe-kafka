@@ -1,4 +1,4 @@
-package com.nequissimus.circe
+package nequi.circe
 
 import java.util.{ Map => JMap }
 
