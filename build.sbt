@@ -67,8 +67,8 @@ libraryDependencies ++= Seq(
   "io.circe" %% "circe-generic" % "0.9.3" % Test,
   "io.circe" %% "circe-parser" % "0.9.3",
   "org.apache.kafka" % "kafka-clients" % "2.0.0",
-  compilerPlugin("com.github.ghik" %% "silencer-plugin" % "1.0"),
-  "com.github.ghik" %% "silencer-lib" % "1.0",
+  compilerPlugin("com.github.ghik" %% "silencer-plugin" % "1.2.1"),
+  "com.github.ghik" %% "silencer-lib" % "1.2.1",
   "com.lihaoyi" %% "utest" % "0.6.4" % Test
 )
 
