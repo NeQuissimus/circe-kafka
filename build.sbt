@@ -1,9 +1,9 @@
-scalaVersion := "2.12.6"
-crossScalaVersions := Seq("2.11.12", "2.12.6")
+scalaVersion := "2.12.7"
+crossScalaVersions := Seq("2.11.12", "2.12.7")
 
 organization := "com.nequissimus"
 name := "circe-kafka"
-version := "2.0.0"
+version := "2.0.1"
 
 // https://tpolecat.github.io/2017/04/25/scalac-flags.html
 val scalac212Options = Seq(

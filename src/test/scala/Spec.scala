@@ -14,23 +14,23 @@ object KafkaSpec extends TestSuite {
     "Create a Serializer from an Encoder" - {
       val enc: Encoder[Foo] = implicitly[Encoder[Foo]]
 
-      val ser: Serializer[Foo] = kafka.serializer(enc)
+      val ser: Serializer[Foo] = kafka.encoder2serializer(enc)
 
       ser
     }
     "Create a Deserializer from a Decoder" - {
       val dec: Decoder[Foo] = implicitly[Decoder[Foo]]
-      val des: Deserializer[Foo] = kafka.deserializer(dec)
+      val des: Deserializer[Foo] = kafka.decoder2deserializer(dec)
 
       des
     }
     "Create a Serde from Encoder and Decoder" - {
       val enc: Encoder[Foo] = implicitly
       val dec: Decoder[Foo] = implicitly
-      val ser: Serializer[Foo] = kafka.serializer(enc)
-      val des: Deserializer[Foo] = kafka.deserializer(dec)
+      val ser: Serializer[Foo] = kafka.encoder2serializer(enc)
+      val des: Deserializer[Foo] = kafka.decoder2deserializer(dec)
 
-      val serde: Serde[Foo] = kafka.serde(ser, des)
+      val serde: Serde[Foo] = kafka.serializerdeserializer2serde(ser, des)
 
       serde
     }
