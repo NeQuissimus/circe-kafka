@@ -3,7 +3,7 @@ crossScalaVersions := Seq("2.11.12", "2.12.7")
 
 organization := "com.nequissimus"
 name := "circe-kafka"
-version := "2.0.1"
+version := "2.1.0"
 
 // https://tpolecat.github.io/2017/04/25/scalac-flags.html
 val scalac212Options = Seq(
