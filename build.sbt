@@ -1,5 +1,5 @@
-scalaVersion := "2.12.7"
-crossScalaVersions := Seq("2.11.12", "2.12.7")
+scalaVersion := "2.12.8"
+crossScalaVersions := Seq("2.11.12", "2.12.8")
 
 organization := "com.nequissimus"
 name := "circe-kafka"
