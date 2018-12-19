@@ -63,9 +63,9 @@ scalacOptions := (CrossVersion.partialVersion(scalaBinaryVersion.value) match {
 })
 
 libraryDependencies ++= Seq(
-  "io.circe" %% "circe-core" % "0.10.1",
-  "io.circe" %% "circe-generic" % "0.10.1" % Test,
-  "io.circe" %% "circe-parser" % "0.10.1",
+  "io.circe" %% "circe-core" % "0.11.0",
+  "io.circe" %% "circe-generic" % "0.11.0" % Test,
+  "io.circe" %% "circe-parser" % "0.11.0",
   "org.apache.kafka" % "kafka-clients" % "2.1.0",
   compilerPlugin("com.github.ghik" %% "silencer-plugin" % "1.3.1"),
   "com.github.ghik" %% "silencer-lib" % "1.3.1",
