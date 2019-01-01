@@ -1,6 +1,7 @@
 # Circe-Kafka
 
 [![Build Status](https://travis-ci.org/NeQuissimus/circe-kafka.svg?branch=master)](https://travis-ci.org/NeQuissimus/circe-kafka)
+![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.nequissimus/circe-kafka_2.12/badge.svg)
 
 Implicitly turn your `Encoder` and `Decoder` instances into `Serializer`, `Deserializer` and `Serde`.
 
