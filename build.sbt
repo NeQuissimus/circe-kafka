@@ -69,7 +69,7 @@ libraryDependencies ++= Seq(
   "org.apache.kafka" % "kafka-clients" % "2.1.0",
   compilerPlugin("com.github.ghik" %% "silencer-plugin" % "1.3.3"),
   "com.github.ghik" %% "silencer-lib" % "1.3.3",
-  "com.lihaoyi" %% "utest" % "0.6.6" % Test
+  "com.lihaoyi" %% "utest" % "0.6.7" % Test
 )
 
 testFrameworks += new TestFramework("utest.runner.Framework")
