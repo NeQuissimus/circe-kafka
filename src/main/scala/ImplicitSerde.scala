@@ -16,17 +16,23 @@ package object kafka {
   implicit def encoder2serializer[T <: AnyRef](implicit encoder: Encoder[T]): Serializer[T] = new Serializer[T] {
     def close(): Unit                                                     = {}
     @silent def configure(configs: JMap[String, _], isKey: Boolean): Unit = {}
-    def serialize(topic: String, data: T): Array[Byte]                    = if (data eq null) null.asInstanceOf[Array[Byte]] else
-      stringSerde.serializer.serialize(topic, encoder(data).noSpaces)
+    def serialize(topic: String, data: T): Array[Byte] =
+      if (data eq null) null.asInstanceOf[Array[Byte]]
+      else
+        stringSerde.serializer.serialize(topic, encoder(data).noSpaces)
   }
 
   implicit def decoder2deserializer[T <: AnyRef](implicit decoder: Decoder[T]): Deserializer[T] = new Deserializer[T] {
     def close(): Unit                                                    = {}
     @silent def configure(config: JMap[String, _], isKey: Boolean): Unit = {}
-    def deserialize(topic: String, data: Array[Byte]): T                 = if (data eq null) null.asInstanceOf[T] else {
-      decode[T](new String(data)).fold(error => throw new SerializationException(error), identity)
-    }
+    def deserialize(topic: String, data: Array[Byte]): T =
+      if (data eq null) null.asInstanceOf[T]
+      else {
+        decode[T](new String(data)).fold(error => throw new SerializationException(error), identity)
+      }
   }
 
-  implicit def serializerdeserializer2serde[T <: AnyRef](implicit serializer: Serializer[T], deserializer: Deserializer[T]): Serde[T] = Serdes.serdeFrom(serializer, deserializer)
+  implicit def serializerdeserializer2serde[T <: AnyRef](implicit serializer: Serializer[T],
+                                                         deserializer: Deserializer[T]): Serde[T] =
+    Serdes.serdeFrom(serializer, deserializer)
 }
