@@ -1,9 +1,5 @@
 package nequi.circe
 
-import java.util.{ Map => JMap }
-
-import com.github.ghik.silencer.silent
-
 import io.circe.{ Decoder, Encoder }
 import io.circe.parser._
 
@@ -14,8 +10,6 @@ package object kafka {
   private[kafka] val stringSerde = Serdes.String()
 
   implicit def encoder2serializer[T <: AnyRef](implicit encoder: Encoder[T]): Serializer[T] = new Serializer[T] {
-    def close(): Unit                                                     = {}
-    @silent def configure(configs: JMap[String, _], isKey: Boolean): Unit = {}
     def serialize(topic: String, data: T): Array[Byte] =
       if (data eq null) null.asInstanceOf[Array[Byte]]
       else
@@ -23,8 +17,6 @@ package object kafka {
   }
 
   implicit def decoder2deserializer[T <: AnyRef](implicit decoder: Decoder[T]): Deserializer[T] = new Deserializer[T] {
-    def close(): Unit                                                    = {}
-    @silent def configure(config: JMap[String, _], isKey: Boolean): Unit = {}
     def deserialize(topic: String, data: Array[Byte]): T =
       if (data eq null) null.asInstanceOf[T]
       else {
