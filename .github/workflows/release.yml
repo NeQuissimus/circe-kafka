@@ -1,0 +1,28 @@
+name: Release
+
+on:
+  push:
+    tags:
+    - '*'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Write secrets
+      run: |
+        echo -n "${PGP_PUBLIC}" | base64 -d > /tmp/public.asc
+        echo -n "${PGP_PRIVATE}" | base64 -d > /tmp/secret.asc
+      env:
+        PGP_PRIVATE: ${{ secrets.PGP_PRIVATE }}
+        PGP_PUBLIC: ${{ secrets.PGP_PUBLIC }}
+    - name: Release
+      run: sbt releaseEarly
+      env:
+        CI: GitHub
+        PGP_PASSWORD: ${{ secrets.PGP_PASSWORD }}
+        SONATYPE_USER: ${{ secrets.SONATYPE_USER }}
+        SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
