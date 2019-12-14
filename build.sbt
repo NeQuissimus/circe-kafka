@@ -1,7 +1,7 @@
 val mainScala = "2.12.10"
 
 scalaVersion := mainScala
-crossScalaVersions := Seq("2.11.12", mainScala)
+crossScalaVersions := Seq(mainScala, "2.13.1")
 
 organization := "com.nequissimus"
 name := "circe-kafka"
@@ -33,11 +33,8 @@ val scalac212Options = Seq(
   "-Ywarn-unused:locals",    // Warn if a local definition is unused.
   "-Ywarn-unused:params",    // Warn if a value parameter is unused.
   "-Ywarn-unused:patvars",   // Warn if a variable bound in a pattern is unused.
-  "-Ywarn-unused:privates"   // Warn if a private member is unused.
-)
-
-val scalac211Options = Seq(
-  "-deprecation", // Emit warning and location for usages of deprecated APIs.
+  "-Ywarn-unused:privates",  // Warn if a private member is unused.
+  "-deprecation",            // Emit warning and location for usages of deprecated APIs.
   "-encoding",
   "utf-8",                            // Specify character encoding used by source files.
   "-explaintypes",                    // Explain type errors in more detail.
@@ -78,18 +75,16 @@ val scalac211Options = Seq(
 )
 
 scalacOptions := (CrossVersion.partialVersion(scalaBinaryVersion.value) match {
-  case Some((2, v)) if v == 11 => scalac211Options
-  case _                       => scalac211Options ++ scalac212Options
+  case Some((2, 12)) => scalac212Options
+  case _             => Seq.empty
 })
 
 libraryDependencies ++= Seq(
-  "io.circe"         %% "circe-core"    % "0.11.1",
-  "io.circe"         %% "circe-generic" % "0.11.1" % Test,
-  "io.circe"         %% "circe-parser"  % "0.11.1",
-  "org.apache.kafka" % "kafka-clients"  % "2.3.1",
-  "com.lihaoyi"      %% "utest"         % "0.6.7" % Test
+  "io.circe"         %% "circe-core"    % "0.12.3",
+  "io.circe"         %% "circe-generic" % "0.12.3" % Test,
+  "io.circe"         %% "circe-parser"  % "0.12.3",
+  "org.apache.kafka" % "kafka-clients"  % "2.4.0",
+  "com.lihaoyi"      %% "utest"         % "0.6.9" % Test
 )
 
 testFrameworks += new TestFramework("utest.runner.Framework")
-
-addCommandAlias("format", "all scalafmtSbt scalafmt test:scalafmt")
