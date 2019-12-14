@@ -11,5 +11,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: Lint
       run: sbt scalafmtCheckAll
-    - name: Test
-      run: sbt test
+    - name: Test 2.12
+      run: sbt ++2.12.10! test
+    - name: Test 2.13
+      run: sbt ++2.13.1! test
