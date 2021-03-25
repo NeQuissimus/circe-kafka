@@ -24,8 +24,8 @@ package object kafka {
       }
   }
 
-  implicit def serializerdeserializer2serde[T <: AnyRef](
-    implicit serializer: Serializer[T],
+  implicit def serializerdeserializer2serde[T <: AnyRef](implicit
+    serializer: Serializer[T],
     deserializer: Deserializer[T]
   ): Serde[T] =
     Serdes.serdeFrom(serializer, deserializer)
