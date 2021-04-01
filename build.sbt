@@ -84,7 +84,7 @@ libraryDependencies ++= Seq(
   "io.circe"         %% "circe-generic" % "0.13.0" % Test,
   "io.circe"         %% "circe-parser"  % "0.13.0",
   "org.apache.kafka" % "kafka-clients"  % "2.7.0",
-  "com.lihaoyi"      %% "utest"         % "0.7.7" % Test
+  "com.lihaoyi"      %% "utest"         % "0.7.8" % Test
 )
 
 testFrameworks += new TestFramework("utest.runner.Framework")
