@@ -20,7 +20,8 @@ package object kafka {
     def deserialize(topic: String, data: Array[Byte]): T =
       if (data eq null) null.asInstanceOf[T]
       else {
-        decode[T](new String(data)).fold(error => throw new SerializationException(error), identity)
+        decode[T](stringSerde.deserializer.deserialize(topic, data))
+          .fold(error => throw new SerializationException(error), identity)
       }
   }
 
