@@ -1,7 +1,7 @@
 val mainScala = "2.12.15"
 
 scalaVersion := mainScala
-crossScalaVersions := Seq(mainScala, "2.13.6")
+crossScalaVersions := Seq(mainScala, "2.13.7")
 
 organization := "com.nequissimus"
 name := "circe-kafka"
@@ -26,15 +26,15 @@ scmInfo := Some(
 
 // https://tpolecat.github.io/2017/04/25/scalac-flags.html
 val scalac212Options = Seq(
-  "-Xlint:constant",         // Evaluation of a constant arithmetic expression results in an error.
-  "-Ywarn-extra-implicit",   // Warn when more than one implicit parameter section is defined.
-  "-Ywarn-unused:implicits", // Warn if an implicit parameter is unused.
-  "-Ywarn-unused:imports",   // Warn if an import selector is not referenced.
-  "-Ywarn-unused:locals",    // Warn if a local definition is unused.
-  "-Ywarn-unused:params",    // Warn if a value parameter is unused.
-  "-Ywarn-unused:patvars",   // Warn if a variable bound in a pattern is unused.
-  "-Ywarn-unused:privates",  // Warn if a private member is unused.
-  "-deprecation",            // Emit warning and location for usages of deprecated APIs.
+  "-Xlint:constant",                  // Evaluation of a constant arithmetic expression results in an error.
+  "-Ywarn-extra-implicit",            // Warn when more than one implicit parameter section is defined.
+  "-Ywarn-unused:implicits",          // Warn if an implicit parameter is unused.
+  "-Ywarn-unused:imports",            // Warn if an import selector is not referenced.
+  "-Ywarn-unused:locals",             // Warn if a local definition is unused.
+  "-Ywarn-unused:params",             // Warn if a value parameter is unused.
+  "-Ywarn-unused:patvars",            // Warn if a variable bound in a pattern is unused.
+  "-Ywarn-unused:privates",           // Warn if a private member is unused.
+  "-deprecation",                     // Emit warning and location for usages of deprecated APIs.
   "-encoding",
   "utf-8",                            // Specify character encoding used by source files.
   "-explaintypes",                    // Explain type errors in more detail.
@@ -80,11 +80,11 @@ scalacOptions := (CrossVersion.partialVersion(scalaBinaryVersion.value) match {
 })
 
 libraryDependencies ++= Seq(
-  "io.circe"         %% "circe-core"    % "0.14.1",
-  "io.circe"         %% "circe-generic" % "0.14.1" % Test,
-  "io.circe"         %% "circe-parser"  % "0.14.1",
-  "org.apache.kafka" % "kafka-clients"  % "3.0.0",
-  "com.lihaoyi"      %% "utest"         % "0.7.10" % Test
+  "io.circe"        %% "circe-core"    % "0.14.1",
+  "io.circe"        %% "circe-generic" % "0.14.1" % Test,
+  "io.circe"        %% "circe-parser"  % "0.14.1",
+  "org.apache.kafka" % "kafka-clients" % "3.0.0",
+  "com.lihaoyi"     %% "utest"         % "0.7.10" % Test
 )
 
 testFrameworks += new TestFramework("utest.runner.Framework")
