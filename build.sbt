@@ -1,7 +1,7 @@
 val mainScala = "2.12.15"
 
 scalaVersion := mainScala
-crossScalaVersions := Seq(mainScala, "2.13.7")
+crossScalaVersions := Seq(mainScala, "2.13.8")
 
 organization := "com.nequissimus"
 name := "circe-kafka"
@@ -83,8 +83,8 @@ libraryDependencies ++= Seq(
   "io.circe"        %% "circe-core"    % "0.14.1",
   "io.circe"        %% "circe-generic" % "0.14.1" % Test,
   "io.circe"        %% "circe-parser"  % "0.14.1",
-  "org.apache.kafka" % "kafka-clients" % "3.0.0",
-  "com.lihaoyi"     %% "utest"         % "0.7.11" % Test
+  "org.apache.kafka" % "kafka-clients" % "3.1.0",
+  "com.lihaoyi"     %% "utest"         % "0.7.10" % Test
 )
 
 testFrameworks += new TestFramework("utest.runner.Framework")
