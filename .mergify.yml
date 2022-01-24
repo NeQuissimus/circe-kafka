@@ -1,3 +1,8 @@
+queue_rules:
+  - name: default
+    conditions:
+      - check-success=build
+
 pull_request_rules:
   - name: Automatic merge
     conditions:
@@ -5,13 +10,15 @@ pull_request_rules:
       - "#approved-reviews-by>=1"
       - "status-success=build"
     actions:
-      merge:
-        strict: true
+      queue:
+        method: merge
+        name: default
   - name: Merge scala-steward
     conditions:
       - base=master
       - author=scala-steward
       - "status-success=build"
     actions:
-      merge:
-        strict: true
+      queue:
+        method: merge
+        name: default
