@@ -20,14 +20,14 @@ jobs:
         PGP_PRIVATE: ${{ secrets.PGP_PRIVATE }}
         PGP_PUBLIC: ${{ secrets.PGP_PUBLIC }}
     - name: Release 2.12
-      run: sbt ++2.12.13! releaseEarly
+      run: sbt ++2.12.15! releaseEarly
       env:
         CI: GitHub
         PGP_PASSWORD: ${{ secrets.PGP_PASSWORD }}
         SONATYPE_USER: ${{ secrets.SONATYPE_USER }}
         SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
     - name: Release 2.13
-      run: sbt ++2.13.5! releaseEarly
+      run: sbt ++2.13.8! releaseEarly
       env:
         CI: GitHub
         PGP_PASSWORD: ${{ secrets.PGP_PASSWORD }}
