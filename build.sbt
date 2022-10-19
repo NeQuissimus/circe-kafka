@@ -1,7 +1,7 @@
 val mainScala = "2.12.16"
 
 scalaVersion := mainScala
-crossScalaVersions := Seq(mainScala, "2.13.8")
+crossScalaVersions := Seq(mainScala, "2.13.10")
 
 organization := "com.nequissimus"
 name := "circe-kafka"
