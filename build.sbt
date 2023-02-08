@@ -83,7 +83,7 @@ libraryDependencies ++= Seq(
   "io.circe"        %% "circe-core"    % "0.14.3",
   "io.circe"        %% "circe-generic" % "0.14.3" % Test,
   "io.circe"        %% "circe-parser"  % "0.14.3",
-  "org.apache.kafka" % "kafka-clients" % "3.3.2",
+  "org.apache.kafka" % "kafka-clients" % "3.4.0",
   "com.lihaoyi"     %% "utest"         % "0.8.1"  % Test
 )
 
