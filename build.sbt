@@ -80,9 +80,9 @@ scalacOptions := (CrossVersion.partialVersion(scalaBinaryVersion.value) match {
 })
 
 libraryDependencies ++= Seq(
-  "io.circe"        %% "circe-core"    % "0.14.4",
-  "io.circe"        %% "circe-generic" % "0.14.4" % Test,
-  "io.circe"        %% "circe-parser"  % "0.14.4",
+  "io.circe"        %% "circe-core"    % "0.14.5",
+  "io.circe"        %% "circe-generic" % "0.14.5" % Test,
+  "io.circe"        %% "circe-parser"  % "0.14.5",
   "org.apache.kafka" % "kafka-clients" % "3.4.0",
   "com.lihaoyi"     %% "utest"         % "0.8.1"  % Test
 )
