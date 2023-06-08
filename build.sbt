@@ -1,7 +1,7 @@
 val mainScala = "2.12.18"
 
 scalaVersion := mainScala
-crossScalaVersions := Seq(mainScala, "2.13.10")
+crossScalaVersions := Seq(mainScala, "2.13.11")
 
 organization := "com.nequissimus"
 name := "circe-kafka"
@@ -83,7 +83,7 @@ libraryDependencies ++= Seq(
   "io.circe"        %% "circe-core"    % "0.14.5",
   "io.circe"        %% "circe-generic" % "0.14.5" % Test,
   "io.circe"        %% "circe-parser"  % "0.14.5",
-  "org.apache.kafka" % "kafka-clients" % "3.4.0",
+  "org.apache.kafka" % "kafka-clients" % "3.4.1",
   "com.lihaoyi"     %% "utest"         % "0.8.1"  % Test
 )
 
