@@ -1,24 +1,26 @@
 queue_rules:
+  - name: duplicated default from Automatic merge
+    queue_conditions:
+      - base=master
+      - "#approved-reviews-by>=1"
+      - "status-success=build"
+    merge_conditions:
+      - check-success=build
+    merge_method: merge
+  - name: duplicated default from Merge scala-steward
+    queue_conditions:
+      - base=master
+      - author=scala-steward
+      - "status-success=build"
+    merge_conditions:
+      - check-success=build
+    merge_method: merge
   - name: default
     conditions:
       - check-success=build
 
 pull_request_rules:
-  - name: Automatic merge
-    conditions:
-      - base=master
-      - "#approved-reviews-by>=1"
-      - "status-success=build"
+  - name: Automatic merge + Merge scala-steward
+    conditions: []
     actions:
       queue:
-        method: merge
-        name: default
-  - name: Merge scala-steward
-    conditions:
-      - base=master
-      - author=scala-steward
-      - "status-success=build"
-    actions:
-      queue:
-        method: merge
-        name: default
