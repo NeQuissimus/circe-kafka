@@ -1,4 +1,4 @@
-val mainScala = "2.12.20"
+val mainScala = "2.12.21"
 
 scalaVersion := mainScala
 crossScalaVersions := Seq(mainScala, "2.13.15")
